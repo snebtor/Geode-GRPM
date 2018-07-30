@@ -1,4 +1,6 @@
-import processing.opengl.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 
 class Vertx {
  int x, y;
@@ -15,8 +17,8 @@ boolean firstpress, polygonClosed, editMode;
 int x1, y1, x2, y2, a, verticesIndex;
 
 void setup(){
-size(1380,900,OPENGL);
-textureMode(NORMALIZED);
+size(1380,900,P3D);
+textureMode(NORMAL);
     
     vertices = new Vertx[1];
     firstpress = editMode = true;
@@ -29,10 +31,11 @@ textureMode(NORMALIZED);
 
 void draw() {
   if (!editMode) {
+    
     for (int i=0; i<vertices.length; i=i+4) {
       img1=loadImage("../geode_Server/cross.png");
       noStroke();
-      //frameRate(15);
+      
       
         //shape 1
       beginShape();
@@ -91,9 +94,6 @@ void mouseReleased(){
 }
 
 void keyPressed() {
+  background(0);
   editMode = false;
 }
-
-
-
-

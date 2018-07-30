@@ -2,12 +2,13 @@ import processing.opengl.*;
 //import cc.arduino.*;
 import processing.serial.*;
 import processing.net.*;
-import codeanticode.gsvideo.*; //GSVideo
+//import codeanticode.gsvideo.*; //GSVideo
+import processing.video.*;
 
 Server myServer;
 boolean haveClients = false;
 //Arduino arduino;
-GSMovie cam;
+Movie cam;
 
 PVector A,B,C,D,E,F;
 PImage tex;
@@ -55,14 +56,14 @@ size(350,350,OPENGL);
 //     arduino.pinMode(Ycv[2], Arduino.INPUT);
   }
   myServer = new Server(this, 5204);
-  cam = new GSMovie(this, "t.mov");
+  cam = new Movie(this, "t.mov");
   cam.loop();
   crossx = loadShape("x.svg");
   shapeMode(CENTER);
   ellipseMode(CENTER);
   
   stroke(255);
-  strokeWeight(0.5);
+  strokeWeight(2);
   A = new PVector(0, 44);
   B = new PVector(142, 44);
   C = new PVector(142, 0);
@@ -73,7 +74,7 @@ size(350,350,OPENGL);
 }
 
 
-void movieEvent(GSMovie cam) {
+void movieEvent(Movie cam) {
   cam.read();
 } 
 
